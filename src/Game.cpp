@@ -3,6 +3,8 @@
 //
 
 #include "Game.h"
+#include <string>
+#include <assert.h>
 
 std::string Game::EMPTY_LOCATION = "-";
 

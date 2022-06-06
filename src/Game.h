@@ -9,7 +9,7 @@
 #include <memory>
 #include <utility>
 
-typedef struct Player {
+struct Player {
     char player_symbol{};
     std::string play_name{};
 
@@ -18,16 +18,16 @@ typedef struct Player {
         this->player_symbol = player_symbol;
         this->play_name = std::move(play_name);
     }
-} Player;
+};
 
-typedef struct Game_struct {
+struct Game_struct {
     int board_size{};
     bool winner{};
     std::unique_ptr<Player> players[2];
     int current_player{};
     std::string empty_location;
     std::string board;
-} Game_struct;
+};
 
 
 class Game {

@@ -102,13 +102,7 @@ bool Game::Get_player_input(int& choice) {
 }
 
 void Game::Toggle_current_player() {
-    if(this->game->current_player == 1)
-    {
-        this->game->current_player = 0;
-        return;
-    }
-
-    this->game->current_player = 1;
+    game->current_player = game->current_player == 1 ? 0 : 1;
 }
 
 void Game::Place_player_choice(int const& choice) {

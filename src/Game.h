@@ -9,7 +9,7 @@
 #include <memory>
 #include <utility>
 
-typedef struct Player {
+struct Player {
     char player_symbol{};
     std::string play_name{};
 
@@ -18,29 +18,29 @@ typedef struct Player {
         this->player_symbol = player_symbol;
         this->play_name = std::move(play_name);
     }
-} Player;
+};
 
-typedef struct Game_struct {
+struct Game_struct {
     int board_size{};
     bool winner{};
     std::unique_ptr<Player> players[2];
     int current_player{};
     std::string empty_location;
     std::string board;
-} Game_struct;
+};
 
 
 class Game {
-    static const int BOARD_SIZE = 10;
-    static std::string EMPTY_LOCATION;
+    const int BOARD_SIZE = 10;
+    std::string const EMPTY_LOCATION{"-"};
     std::shared_ptr<Game_struct> game;
 
     std::shared_ptr<Game_struct> CreateGame();
     void Print_board();
     bool Check_input_range(int choice);
-    bool Get_player_input(int *choice);
+    bool Get_player_input(int& choice);
     void Toggle_current_player();
-    void Place_player_choice(int choice);
+    void Place_player_choice(int const& choice);
     bool Check_row(char a, char b, char c, char player_symbol);
     bool Check_results(char player_symbol);
     bool Check_for_winner();

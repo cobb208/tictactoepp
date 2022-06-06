@@ -3,8 +3,8 @@
 //
 
 #include "Game.h"
-
-std::string Game::EMPTY_LOCATION = "-";
+#include <string>
+#include <assert.h>
 
 Game::Game() {
     this->game = CreateGame();
@@ -66,15 +66,10 @@ void Game::Print_board() {
 }
 
 bool Game::Check_input_range(int choice) {
-    if(choice > 0 and choice <=9)
-    {
-        return true;
-    }
-
-    return false;
+    return choice > 0 && choice <= 9;
 }
 
-bool Game::Get_player_input(int *choice) {
+bool Game::Get_player_input(int& choice) {
     std::string user_input;
     int number_input;
     bool is_correct = false;
@@ -97,21 +92,15 @@ bool Game::Get_player_input(int *choice) {
         }
     }
 
-    *choice = number_input;
+    choice = number_input;
     return true;
 }
 
 void Game::Toggle_current_player() {
-    if(this->game->current_player == 1)
-    {
-        this->game->current_player = 0;
-        return;
-    }
-
-    this->game->current_player = 1;
+    game->current_player = game->current_player == 1 ? 0 : 1;
 }
 
-void Game::Place_player_choice(int choice) {
+void Game::Place_player_choice(int const& choice) {
     if(this->game->board[choice - 1] == this->game->empty_location[0])
     {
         this->game->board[choice - 1] = this->game->players[this->game->current_player]->player_symbol;
@@ -122,12 +111,7 @@ void Game::Place_player_choice(int choice) {
 }
 
 bool Game::Check_row(char a, char b, char c, char player_symbol) {
-    if(a == player_symbol and b == player_symbol and c == player_symbol)
-    {
-        return true;
-    }
-
-    return false;
+    return a == player_symbol && b == player_symbol && c == player_symbol;
 }
 
 bool Game::Check_results(char player_symbol) {
@@ -209,7 +193,7 @@ void Game::Game_loop() {
     while(!game_complete)
     {
         int choice;
-        Get_player_input(&choice);
+        Get_player_input(choice);
         Place_player_choice(choice);
         Print_board();
         if(Check_for_winner() or Check_for_tie()) {

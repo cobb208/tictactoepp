@@ -40,7 +40,7 @@ class Game {
     bool Check_input_range(int choice);
     bool Get_player_input(int& choice);
     void Toggle_current_player();
-    void Place_player_choice(int choice);
+    void Place_player_choice(int const& choice);
     bool Check_row(char a, char b, char c, char player_symbol);
     bool Check_results(char player_symbol);
     bool Check_for_winner();

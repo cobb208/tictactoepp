@@ -113,7 +113,7 @@ void Game::Toggle_current_player() {
     this->game->current_player = 1;
 }
 
-void Game::Place_player_choice(int choice) {
+void Game::Place_player_choice(int const& choice) {
     if(this->game->board[choice - 1] == this->game->empty_location[0])
     {
         this->game->board[choice - 1] = this->game->players[this->game->current_player]->player_symbol;

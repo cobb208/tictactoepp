@@ -6,8 +6,6 @@
 #include <string>
 #include <assert.h>
 
-std::string Game::EMPTY_LOCATION = "-";
-
 Game::Game() {
     this->game = CreateGame();
 }

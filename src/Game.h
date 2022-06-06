@@ -31,8 +31,8 @@ typedef struct Game_struct {
 
 
 class Game {
-    static const int BOARD_SIZE = 10;
-    static std::string EMPTY_LOCATION;
+    const int BOARD_SIZE = 10;
+    std::string const EMPTY_LOCATION{"-"};
     std::shared_ptr<Game_struct> game;
 
     std::shared_ptr<Game_struct> CreateGame();

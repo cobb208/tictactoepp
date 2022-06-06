@@ -38,7 +38,7 @@ class Game {
     std::shared_ptr<Game_struct> CreateGame();
     void Print_board();
     bool Check_input_range(int choice);
-    bool Get_player_input(int *choice);
+    bool Get_player_input(int& choice);
     void Toggle_current_player();
     void Place_player_choice(int choice);
     bool Check_row(char a, char b, char c, char player_symbol);

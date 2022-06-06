@@ -74,7 +74,7 @@ bool Game::Check_input_range(int choice) {
     return false;
 }
 
-bool Game::Get_player_input(int *choice) {
+bool Game::Get_player_input(int& choice) {
     std::string user_input;
     int number_input;
     bool is_correct = false;
@@ -97,7 +97,7 @@ bool Game::Get_player_input(int *choice) {
         }
     }
 
-    *choice = number_input;
+    choice = number_input;
     return true;
 }
 
@@ -209,7 +209,7 @@ void Game::Game_loop() {
     while(!game_complete)
     {
         int choice;
-        Get_player_input(&choice);
+        Get_player_input(choice);
         Place_player_choice(choice);
         Print_board();
         if(Check_for_winner() or Check_for_tie()) {

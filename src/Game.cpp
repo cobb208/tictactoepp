@@ -116,12 +116,7 @@ void Game::Place_player_choice(int const& choice) {
 }
 
 bool Game::Check_row(char a, char b, char c, char player_symbol) {
-    if(a == player_symbol and b == player_symbol and c == player_symbol)
-    {
-        return true;
-    }
-
-    return false;
+    return a == player_symbol && b == player_symbol && c == player_symbol;
 }
 
 bool Game::Check_results(char player_symbol) {

@@ -66,12 +66,7 @@ void Game::Print_board() {
 }
 
 bool Game::Check_input_range(int choice) {
-    if(choice > 0 and choice <=9)
-    {
-        return true;
-    }
-
-    return false;
+    return choice > 0 && choice <= 9;
 }
 
 bool Game::Get_player_input(int& choice) {
